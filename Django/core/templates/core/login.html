@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/base.css' %}">
+    <meta charset="utf-8" />
+    <title>Login Page</title>
+</head>
+
+<body>
+
+
+    <div class="center">
+        <div class="container">
+            <div class="text navigation">
+
+                <p id="info"><a href="{% url 'mainPage' %}">
+                        < To main page</a> </p> </div> {% load qr_code %} {% comment %}
+                            {% with data="{'name':name, 'nonce':nonce, 'url':url}" %} {% endcomment %}
+                            {% qr_from_text data size="s" %} <div class="text">
+                            <p id="info">Scan the code with the app in order to <strong>login</strong></p>
+            </div>
+
+            <div id="countdown">
+
+                <svg id="circle">
+
+                    <circle r="30" cx="150" cy="75"></circle>
+                </svg>
+                <div id="countdown-number"></div>
+            </div>
+
+        </div>
+
+        <div class="overlay">
+            <div class="center">
+                <div class="container">
+                    <div class="text">
+                        <p id="info">QR code expired. <a href=".">Reload</a> the page to get a new one, or go back to
+                            the<a href="{% url 'mainPage' %}"> main page</a></p>
+                        <div class="spinner"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script src="{% static 'core/js/webSocket.js' %}"></script>
+
+        <script src="{% static 'core/js/countdown.js' %}"></script>
+
+
+
+</body>

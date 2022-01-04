@@ -1,0 +1,20 @@
+env/* 
+venv/*
+ENV/
+*.py[cod] 
+*$py.class
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+*.code-workspace
+*.bak
+# Ignore dev spefici settings
+dev.py
+# Ignore Mac system files
+.DS_store
+#ignore vscode stuff
+.VSCodeCounter
+out/*
+

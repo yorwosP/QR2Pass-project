@@ -1,0 +1,447 @@
+html,
+body {
+  height: 100%;
+  /* margin: 0; */
+  background-color: #575C60;
+  color: #BBBBBC;
+
+
+
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+
+}
+
+.center>.container {
+  width: 300px;
+
+
+}
+
+.container svg {
+  margin: auto;
+  display: block;
+}
+
+/* .center img{
+      width:200px;
+  } */
+
+.text {
+  margin-top: 20px;
+  text-align: center;
+  color: #29ABE2;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  /* font-weight: normal; */
+}
+
+.text.navigation {
+  font-size: 12px;
+
+}
+
+.form-submit-button {
+
+  /* background: #B9DFFF;
+    
+    color: #fff; */
+  background: #575C60;
+  color: #BBBBBC;
+
+  /* border: 2px solid #29ABE2; */
+  border: 2px solid;
+
+  border-radius: 20px;
+
+  /* box-shadow: 5px 5px 5px #eee; */
+
+  text-shadow: none;
+  font-size: 12px;
+
+
+
+}
+
+
+.form-submit-button:hover {
+  color: #575C60;
+  background-color: #BBBBBC;
+
+  /* background: #B9DFFF;
+        
+        color: #fff; */
+
+
+  border: 2px solid #ffffff;
+
+  /* border-radius: 20px; */
+
+  /* box-shadow: 5px 5px 5px #eee; */
+
+
+
+
+
+}
+
+
+
+.text a {
+  color: #BBBBBC;
+  text-decoration: none;
+}
+
+form>label {
+  color: #BBBBBC;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+
+
+
+}
+
+form input {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  border-style: none;
+  padding: 2px 5px;
+  background-color: #BBBBBC;
+
+
+  /* line-height: 2em; */
+
+
+
+}
+
+form input:focus {
+
+  background-color: #e9e9eb;
+  outline: none;
+
+}
+
+form input.error {
+  background-color: rgb(248, 163, 163);
+}
+
+
+
+
+.text>div.left {
+  /* float: left; */
+  /* display: block; */
+  display: inline-block;
+  width: 40%;
+  /* background-color: #a53d3d; */
+  text-align: right;
+}
+
+
+
+.text>div.right {
+  /* float: left; */
+  display: inline-block;
+  width: 40%;
+  /* background-color: #4860eb; */
+  text-align: left;
+}
+
+/* tooltip stuff */
+/* Tooltip container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted black; If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip-container .tooltiptext {
+  /* visibility: hidden; */
+  width: 120%;
+  /*it will take 20% more space %/
+    /* background-color: #969393; */
+  color: rgb(248, 163, 163);
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 6px;
+  border: 1px solid rgb(39, 39, 39);
+  /* border-width: 2px;
+    border-color: red; */
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60%;
+  /*50% +20%more spaces*/
+  box-shadow: 2px 2px 10px 0px rgb(39, 39, 39);
+  font-size: 10px;
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 1s;
+
+
+
+}
+
+/* .visible {
+    visibility: visible !important; 
+    opacity: 0.8 !important; 
+    transition: opacity 1s;
+  } */
+
+
+/* override the style of SVG QR code */
+path.qrline {
+  stroke: #dbdbdb;
+}
+
+.tooltip-container .tooltiptext>a {
+  text-decoration: underline dotted;
+  color: #d0d0d1;
+
+  /* color: black; */
+
+}
+
+.tooltip-container .tooltiptext.visible {
+  opacity: 1;
+
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: hidden;
+}
+
+
+
+.text a:hover {
+  color: #29ABE2;
+
+
+}
+
+
+/* 
+    shake animation 
+    https://css-tricks.com/snippets/css/shake-css-keyframe-animation/
+  */
+
+.shake {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+
+/* countdown stuff */
+
+#countdown {
+  /* position: relative;
+    margin: auto;
+    margin-top: 100px;
+    height: 100px;
+    width: 100px; */
+  /* background-color: rgb(240, 126, 234); */
+  text-align: center;
+}
+
+#countdown-number {
+  color: #dbdbdb;
+  ;
+  position: relative;
+  display: inline-block;
+  top: -84px;
+  /* animation-delay: 50s; */
+  animation: countdown 10s linear 50s forwards;
+  /* line-height: 40px;
+    height:150; */
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  /* transform: rotateY(-180deg) rotateZ(-90deg); */
+  /* position: absolute; */
+  /* width:300px; */
+  background-color: aquamarine;
+
+}
+
+svg#circle {
+  /* background-color: rgb(95, 39, 226); */
+  transform: rotateY(-180deg) rotateZ(-90deg);
+
+}
+
+
+
+svg circle {
+
+
+  stroke-dasharray: 188px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 2px;
+  stroke: #dbdbdb;
+  fill: none;
+  /* animation: countdown 60s linear forwards ; */
+}
+
+svg circle.stopped {
+  stroke: red;
+  animation: countdown-finished 1s ease-in-out;
+
+
+
+}
+
+.hidden {
+
+  visibility: hidden;
+
+
+}
+
+
+@keyframes countdown {
+  from {
+    color: white;
+  }
+
+  to {
+    color: red;
+  }
+
+}
+
+
+@keyframes countdown-finished {
+  from {
+    stroke-dashoffset: 188px;
+  }
+
+  to {
+    stroke-dashoffset: 0px;
+
+  }
+}
+
+
+.overlay {
+  display: block;
+  background: rgb(201, 200, 200);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  /* width:0%; */
+  height: 0%;
+  overflow: hidden;
+  /* animation: show-finished 0.75s ease-in-out forwards ; */
+  /* opacity: 0.7;
+    filter:alpha(opacity=70); */
+  /* z-index: 99; */
+}
+
+.overlay.visible {
+  animation: show-finished 0.75s ease-in-out forwards;
+
+
+}
+
+.overlay .text a {
+  color: rgb(58, 58, 58);
+}
+
+.overlay .text a:hover {
+  color: #29ABE2;
+}
+
+
+
+@keyframes show-finished {
+  from {
+    height: 0%;
+  }
+
+  to {
+    height: 100%;
+
+  }
+}
+
+/* SPINNER https://www.w3schools.com/howto/howto_css_loader.asp */
+
+
+
+.spinner {
+  margin: auto;
+  display: none;
+  border: 6px solid lightgray;
+  border-radius: 50%;
+  border-top: 6px solid #29ABE2;
+
+  width: 62px;
+  height: 62px;
+  /* -webkit-animation: spin 2s linear infinite; Safari */
+  /* animation: spin 2s linear infinite; */
+}
+
+.spinner.visible {
+  display: block;
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+/* @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    } */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

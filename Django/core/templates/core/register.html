@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/base.css' %}">
+</head>
+
+<body>
+
+
+
+    <div class="center">
+        <div class="container">
+            <div class="text navigation">
+
+                <p id="info"><a href="{% url 'mainPage' %}">
+                        < To main page</a> </p> </div> {%if email == '' or error%} <form
+                            action="{% url 'registerPage' %}" method="POST" {%if error%} class="shake" {%endif%}>
+                            {% csrf_token %}
+                            <label for="your_email">Your email: </label>
+                            <div class="tooltip-container">
+                                <input id="id_username" type="email" required="required" name="your_email">
+                                <span id="server_message" class="tooltiptext {%if error%} visible {%endif%}">Email
+                                    already in use. Please use different email, or go to <a
+                                        href="{% url 'loginPage' %}">login page</a></span>
+                            </div>
+
+
+
+                            <input id="submit-button" type="submit" value="Register" class="form-submit-button">
+                            </form>
+
+                            {% else %}
+                            {% if error %}
+
+                            {%else%}
+                            {% load static %}
+
+                            {% load qr_code %}
+
+                            {% qr_from_text data size="s" %}
+                            <div class="text">
+                                <p id="info">Scan the code with the app in order to <strong>register</strong></p>
+                            </div>
+
+                            <div id="countdown">
+
+                                <svg id="circle">
+
+                                    <circle r="30" cx="150" cy="75"></circle>
+                                </svg>
+                                <div id="countdown-number"></div>
+                            </div>
+
+                            {%endif%}
+                            {%endif%}
+
+
+                            <div class="overlay">
+                                <div class="center">
+                                    <div class="container">
+                                        <div class="text">
+                                            <p id="info">QR code expired. <a href=".">Reload</a> the page to get a new
+                                                one</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {%if email != ''%}
+    <script src="{% static 'core/js/webSocket.js' %}"></script>
+    <script src="{% static 'core/js/countdown.js' %}"></script>
+
+    {%endif%}
+    <script>
+        $(document).ready(function () {
+
+
+            function toggleClass(error = false) {
+                if (error) {
+                    $("#server_message").addClass("visible");
+                    $("form").addClass("shake");
+                    $("#id_username").addClass("error");
+
+                } else {
+                    $("#server_message").removeClass("visible");
+                    $("form").removeClass("shake");
+                    $("#id_username").removeClass("error");
+
+
+                }
+
+
+            }
+
+
+
+
+            $("#id_username").on("focusin focusout keydown click", function () {
+                toggleClass();
+
+
+
+            });
+
+
+            $("#submit-button").click(function (event) {
+                event.preventDefault();
+                var username = $("#id_username").val();
+                $.ajax({
+                    url: '{% url 'validate_username' %}',
+                    data: {
+                        'username': username
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.is_taken) {
+
+
+
+                        //    var text ='Email already in use. Please use different email, or go to <a href=\"{% url 'loginPage' %}</a>"';
+                        //    console.log(text);
+                        //    var escaped = $("<div>").text(text).html();
+                        //    console.log(escaped);
+
+                            toggleClass(true);
+                            $("#server_message").html('Email already in use. Please use different email, or go to <a href=\"{% url 'loginPage' %}">login page</a>');
+                        } else if (!data.is_valid) {
+
+                            $("#server_message").text('Email is not valid');
+                            toggleClass(true);
+
+                        } else {
+                            console.log("i will submit the form");
+                            toggleClass();
+                            $("form").submit()
+
+                            console.log("you ccan go on. ")
+                        }
+
+
+                    }
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>

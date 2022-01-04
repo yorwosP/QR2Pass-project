@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/base.css' %}">
+</head>
+
+<body>
+
+
+
+    <div class="center">
+        <div class="container">
+            {% load static %}
+            <img src="{% static 'core/media/qr2pass-logo.svg' %}" alt="QR2Pass logo">
+            <div class="text">
+                <div class="left"> <a href="{% url 'loginPage' %}">login</a> </div> | <div class="right"><a
+                        href="{% url 'registerPage' %}">register </a> </div>
+            </div>
+
+        </div>
+
+</body>
+
+</html>
